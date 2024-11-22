@@ -4,69 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./event.css" />
-
+    <script src="./eventAPI.js"></script>
+    <script src="./eventlist.js"></script>
     <title>EventList</title>
   </head>
   <body>
+
     <main>
-      <div id="table-container">
-        <button id="add-event-button" class="button add-event">
-          Add New Event
-        </button>
-        <table class="eventTable">
-          <thead>
-            <tr>
-              <th class="column-header">Event</th>
-              <th class="column-header">Start</th>
-              <th class="column-header">End</th>
-              <th class="column-header">Actions</th>
-            </tr>
-          </thead>
-
-          <tbody id="eventTableBody">
-            <!-- Rows added from backend -->
-        
-            <tfoot>
-                <tr id="newEventRow">
-                  <td><input type="text" class="new-event-name" id="newEventName" placeholder="Event Name"></td>
-                  <td><input type="date" class="new-event-start" id="newEventStart"></td>
-                  <td><input type="date" class="new-event-end" id="newEventEnd"></td>
-                  <td>
-                    <button class="add-btn" id="addBtn"> Add</button>
-                    <button class="cancel-btn" id="cancelBtn"> Cancel</button>
-                  </td>
+        <div class="table-container" id="eventTableContainer">
+            <button class="add-event-top-btn" id="addNewEventButton">Add New Event</button>
+            <table class="event-table" id="eventTable">
+              <thead>
+                <tr class="table-header">
+                  <th class="header-event">Event</th>
+                  <th class="header-start">Start</th>
+                  <th class="header-end">End</th>
+                  <th class="header-actions">Actions</th>
                 </tr>
-              </tfoot>
-        </table>
-
-            <!-- <tr id="new-event-row">
-              <td>
-                <input
-                  id="new-event-name"
-                  type="text"
-                  placeholder="Event Name"
-                  class="input-field"
-                />
-              </td>
-              <td>
-                <input id="new-event-start" type="date" class="input-field" />
-              </td>
-              <td>
-                <input id="new-event-end" type="date" class="input-field" />
-              </td>
-              <td>
-                <button class="button add-btn" id="add-event-btn" >Add</button>
-                <button class="button cancel-btn" id="cancel-event-btn" >
-                  Cancel
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
-
-      </div>
+              </thead>
+              <tbody id="eventTableBody">
+                <!-- Rows from backend-->
+              </tbody>
+             
+            </table>
+          </div>
     </main>
-    <script src="./eventAPI.js"></script>
-    <script src="./event.js"></script>
+
   </body>
 </html>

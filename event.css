@@ -1,52 +1,45 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #f9f9f9;
+    background-color:#f0f0f0
   }
   
-  #eventTable {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  #add-event-button {
+  .add-event-top-btn {
     display: block;
-    margin: 0 auto 20px;
+    margin: 10px auto 20px;
     padding: 10px 20px;
     background-color: #008cba;
-    color: white;
+    color: #fff;
+    border: none;
     border-radius: 4px;
     font-size: 16px;
   }
-  
-  #add-event-button:hover {
-    background-color: #008cba;
+  .table-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #e6e2d3;
   }
   
-  #eventTableBody {
+  .event-table {
     width: 100%;
-    border: 2em;
+    border-collapse: collapse;
   }
   
-  .column-header {
-    background-color: #f4f4f4;
+  .table-header th {
     padding: 10px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 10x solid #ddd;
     font-weight: bold;
   }
-  
-  .event-row td {
-    padding: 10px;
-    border: 1px solid #ddd;
+
+  .event-row td, .new-event-row td {
+    background-color:#e6e2d3;
+    border: 10px solid  white;
   }
-  
-  
-  .input-field {
+
+
+  input[type="text"], input[type="date"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -54,30 +47,35 @@ body {
     font-size: 14px;
   }
   
-  .button {
+  button {
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
+    cursor: pointer;
     font-size: 14px;
   }
   
   .edit-btn {
-    background-color: #008cba;
-    color: #fff;
+    background-color: 	#008cba;
+    color:  #f0f0f0;
   }
   
   .delete-btn {
-    background-color: #c94c4c;
-    color: #fff;
+    background-color:#c94c4c;
+    color:  #f0f0f0;
   }
   
   .add-btn {
-    background-color: #008cba;
-    color: #fff;
+    background-color: 	#008cba;
+    color:  #f0f0f0;
   }
   
   .cancel-btn {
-    background-color: #c94c4c;
-    color: white
+    background-color:#c94c4c;
+    color:  #f0f0f0;
+ 
   }
   
+  .hidden {
+    display: none;
+  }

@@ -1,5 +1,5 @@
 const eventAPI = (() => {
-    const EVENT_API_URL = "http://localhost:3000/events";
+    const EVENT_API_URL = 'http://localhost:3000/events';
     async function getEvents() {
       // GET request to the server
       const response = await fetch(EVENT_API_URL);
@@ -9,7 +9,7 @@ const eventAPI = (() => {
       //   console.log(events);
       return events;
     }
-  
+
     async function postEvent(newEvent) {
       const response = await fetch(EVENT_API_URL, {
         method: "POST",
@@ -33,7 +33,7 @@ const eventAPI = (() => {
       return id;
     }
   
-    async function editEvent(id, newTodo) {
+    async function editEvent(id, newEvent) {
       const response = await fetch(`${EVENT_API_URL}/${id}`, {
         method: "PATCH",
         headers: {
@@ -53,6 +53,5 @@ const eventAPI = (() => {
       editEvent,
     };
   })();
-  
   
   
