@@ -1,0 +1,52 @@
+https://lite.evernote.com/note/89806bcc-0853-c326-ae0c-f767671e1d1e
+
+	- Run "npm install" in terminal to install dependencies
+	- Run "npm run start" in terminal to start the server
+	- Check out http://localhost:3000/ to start play around with the server
+	- Database stores data in db.json file.
+	- You can perform CRUD operation to the database through http request(get, post, put(patch), delete).
+	- design the data structure of event data by yourself
+	- Endpoints:
+		- Http GET: http://localhost:3000/events, to get the complete event list data
+		- Http POST: http://localhost:3000/events, to create new event object (don't include id property in the body)
+		- Http PUT: http://localhost:3000/events/{id}, to update event data with specific id
+		- Http PATCH: http://localhost:3000/events/{id}, to patch event data with specific id
+		- Http DELETE: http://localhost:3000/events/{id}, to delete event data with specific id
+	- when you post the data to the JSON server, it will send you back the same data with an additional property "id" attached
+	- Be careful don't put JSON server files under the same folder as your html file, if you are using live server to host the project, otherwise it will cause refreshing of the page
+
+Requirements: This project is a variation of the todo-list, here are the features required (demo)
+- Must haves (follow the steps to implement them one by one)
+	1. Users are able to add a new event by clicking "Add New Event" button at the top, then fill out the input fields with its name, start, end dates, and then save it.
+	2. Page should get the initial data from the server during the first loading. (i.e. data should persist after refresh)
+	3. Users are able to remove the event by clicking the delete button
+	4. Users are able to edit the event by clicking the edit icon, and click the save icon again to save it
+
+- Nice to haves:
+	- Users can click the cancel button to cancel add or edit
+	- Implement input validation
+	- Users can edit multiple elements at once, removing or editing one element won't affect other elements
+	- Clear inputs after creating an event
+	- Make the style as close to the demo as possible, make it responsive
+- Demo Pics
+
+
+
+
+	
+
+Hints
+	- Use table to achieve the layout of the event list, refer to this guide of using table
+	- use <input type="date"/> for the date input
+	- mock the style of the demo below as much as possible by using css if you have enough time
+	- Some references for color and icon that I used in the demo:
+		- Edit Icon: <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EditIcon" aria-label="fontSize small"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>
+		- Delete Icon:<svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon" aria-label="fontSize small"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+		- Save Icon: <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21,20V8.414a1,1,0,0,0-.293-.707L16.293,3.293A1,1,0,0,0,15.586,3H4A1,1,0,0,0,3,4V20a1,1,0,0,0,1,1H20A1,1,0,0,0,21,20ZM9,8h4a1,1,0,0,1,0,2H9A1,1,0,0,1,9,8Zm7,11H8V15a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Z"/></svg>
+		- Cancel Icon: <svg focusable="false" aria-hidden="true" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M19.587 16.001l6.096 6.096c0.396 0.396 0.396 1.039 0 1.435l-2.151 2.151c-0.396 0.396-1.038 0.396-1.435 0l-6.097-6.096-6.097 6.096c-0.396 0.396-1.038 0.396-1.434 0l-2.152-2.151c-0.396-0.396-0.396-1.038 0-1.435l6.097-6.096-6.097-6.097c-0.396-0.396-0.396-1.039 0-1.435l2.153-2.151c0.396-0.396 1.038-0.396 1.434 0l6.096 6.097 6.097-6.097c0.396-0.396 1.038-0.396 1.435 0l2.151 2.152c0.396 0.396 0.396 1.038 0 1.435l-6.096 6.096z"></path></svg>
+		- Add Icon: <svg focusable viewBox="0 0 24 24" aria-hidden="true xmlns="http://www.w3.org/2000/svg"><path d="M12 6V18M18 12H6" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+		- Tan: #e6e2d3
+		- Traffic white: #f0f0f0
+		- Yellow green: #4caf50
+		- Vermillion red: #c94c4c
+		- Blue: #008cba
