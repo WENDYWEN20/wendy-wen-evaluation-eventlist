@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  #eventTable {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #add-event-button {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    background-color: #008cba;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  #add-event-button:hover {
+    background-color: #008cba;
+  }
+  
+  #eventTableBody {
+    width: 100%;
+    border: 2em;
+  }
+  
+  .column-header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-weight: bold;
+  }
+  
+  .event-row td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .edit-btn {
+    background-color: #008cba;
+    color: #fff;
+  }
+  
+  .delete-btn {
+    background-color: #c94c4c;
+    color: #fff;
+  }
+  
+  .add-btn {
+    background-color: #008cba;
+    color: #fff;
+  }
+  
+  .cancel-btn {
+    background-color: #c94c4c;
+    color: white
+  }
+  
