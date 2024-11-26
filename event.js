@@ -171,14 +171,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const eventEditStart = eventEditRow.querySelector(`#eventStart-${eventId}`);
     const eventEditEnd = eventEditRow.querySelector(`#eventEnd-${eventId}`);
     const editButton = eventEditRow.querySelector(`#editButton-${eventId}`);
-    editButton.classList.add('hidden');
+    editButton.classList.add("hidden");
     // const cancelButton = eventEditRow.querySelector(`#cancelHideButton-${eventId}`);
     // cancelButton.classList.remove('hidden');
     // const deleteButton = eventEditRow.querySelector(`#editButton-${eventId}`);
     // editButton.classList.add('hidden');
 
-    const saveEditButton = eventEditRow.querySelector(`#saveHideButton-${eventId}`);
-    saveEditButton.classList.remove('hidden');
+    const saveEditButton = eventEditRow.querySelector(
+      `#saveHideButton-${eventId}`
+    );
+    saveEditButton.classList.remove("hidden");
 
     // const cancelEditButton = eventEditRow.querySelector(`#cancelHideButton-${eventId}`);
     // cancelEditButton.classList.remove('hidden');
@@ -211,7 +213,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const eventEditStart = eventEditRow.querySelector(`#eventStart-${eventId}`);
     const eventEditEnd = eventEditRow.querySelector(`#eventEnd-${eventId}`);
 
-
     let eventInputNameNew = eventEditRow.querySelector(
       `#eventInputName-${eventId}`
     ).value;
@@ -223,36 +224,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     ).value;
 
     if (eventInputNameNew && eventInputStartNew && eventInputEndNew) {
-        const updatedEvent = {
-            eventName: eventInputNameNew,
-            startDate: eventInputStartNew,
-            endDate: eventInputEndNew,
-      }
+      const updatedEvent = {
+        eventName: eventInputNameNew,
+        startDate: eventInputStartNew,
+        endDate: eventInputEndNew,
+      };
       console.log(eventEditRow);
       console.log(eventInputNameNew);
       console.log(eventInputStartNew);
       console.log(eventInputEndNew);
-  
+
       const result = await eventAPI.editEvent(eventId, updatedEvent);
       if (result) {
         console.log(result);
         // Update the display with new values
-  
+
         eventEditName.textContent = eventInputNameNew;
         eventEditStart.textContent = eventInputStartNew;
         eventEditEnd.textContent = eventInputEndNew;
-        const saveEditButton = eventEditRow.querySelector(`#saveHideButton-${eventId}`);
-        saveEditButton.classList.add('hidden');
+        const saveEditButton = eventEditRow.querySelector(
+          `#saveHideButton-${eventId}`
+        );
+        saveEditButton.classList.add("hidden");
         const editButton = eventEditRow.querySelector(`#editButton-${eventId}`);
-        editButton.classList.remove('hidden');
+        editButton.classList.remove("hidden");
       }
-    
     } else {
-      alert('Please fill in all fields to edit the event.');
+      alert("Please fill in all fields to edit the event.");
     }
-
-}
-
+  }
 });
 
 // (function initApp() {

@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <td class="event-actions">
           <button class="edit-btn" id="editBtn-${event.id}">Edit</button>
           <button class="save-btn hidden" id="saveBtn-${event.id}">Save</button>
+          <button class="cancel-btn hidden" id="cancelBtn-${event.id}">Cancel</button>
           <button class="delete-btn" id="deleteBtn-${event.id}">Delete</button>
         </td>
       `;
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const startDate = document.getElementById("newEventStart").value;
         const endDate = document.getElementById("newEventEnd").value;
 
-        if (eventName && startDate && endDate) {
+        if (eventName && startDate && endDate && new Date(startDate) <= new Date(endDate)) {
           const newEvent = {
             eventName,
             startDate,
@@ -104,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             newEventRow.remove(); // Remove the input row after adding
           }
         } else {
-          alert("Please fill in all fields to add a new event.");
+          alert("Start Date need to be no later than End Date.Please fill in all fields to add a new event.");
         }
       });
 
@@ -124,11 +125,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(inputs);
     const editButton = document.getElementById(`editBtn-${eventId}`);
     const saveButton = document.getElementById(`saveBtn-${eventId}`);
-
+    const deleteButton = document.getElementById(`deleteBtn-${eventId}`);
+    const cancelButton = document.getElementById(`cancelBtn-${eventId}`);
     labels.forEach((label) => label.classList.add("hidden"));
     inputs.forEach((input) => input.classList.remove("hidden"));
     editButton.classList.add("hidden");
+    deleteButton.classList.add("hidden");
     saveButton.classList.remove("hidden");
+    cancelButton.classList.remove("hidden");
+    cancelButton.addEventListener("click", () => {
+      console.log("Cancel Button Clicked");
+      labels.forEach((label) => label.classList.remove("hidden"));
+      inputs.forEach((input) => input.classList.add("hidden"));
+      editButton.classList.remove("hidden");
+      deleteButton.classList.remove("hidden");
+      saveButton.classList.add("hidden");
+      cancelButton.classList.add("hidden");
+    });
   }
 
   // Function to save an edited event
@@ -137,37 +150,40 @@ document.addEventListener("DOMContentLoaded", async () => {
     const eventNameInput = eventRow.querySelector(".event-name-input").value;
     const eventStartInput = eventRow.querySelector(".event-start-input").value;
     const eventEndInput = eventRow.querySelector(".event-end-input").value;
+ 
+    if (new Date(eventStartInput) <= new Date(eventEndInput)) {
+      const updatedEvent = {
+        eventName: eventNameInput,
+        startDate: eventStartInput,
+        endDate: eventEndInput,
+      };
+      const result = await eventAPI.editEvent(eventId, updatedEvent);
+      if (result) {
+        // Update the display with new values
+        const labels = eventRow.querySelectorAll(".event-label");
+        labels[0].textContent = eventNameInput;
+        labels[1].textContent = eventStartInput;
+        labels[2].textContent = eventEndInput;
+        // Hide the inputs and show the labels
+        const inputs = eventRow.querySelectorAll(".edit-input");
+        inputs.forEach((input) => input.classList.add("hidden"));
+        labels.forEach((label) => label.classList.remove("hidden"));
 
-    const updatedEvent = {
-      eventName: eventNameInput,
-      startDate: eventStartInput,
-      endDate: eventEndInput,
-    };
-
-    const result = await eventAPI.editEvent(eventId, updatedEvent);
-    if (result) {
-      // Update the display with new values
-      const labels = eventRow.querySelectorAll(".event-label");
-      labels[0].textContent = eventNameInput;
-      labels[1].textContent = eventStartInput;
-      labels[2].textContent = eventEndInput;
-
-      // Hide the inputs and show the labels
-      const inputs = eventRow.querySelectorAll(".edit-input");
-      inputs.forEach((input) => input.classList.add("hidden"));
-      labels.forEach((label) => label.classList.remove("hidden"));
-
-      // Toggle buttons
-      const editButton = document.getElementById(`editBtn-${eventId}`);
-      const saveButton = document.getElementById(`saveBtn-${eventId}`);
-      saveButton.classList.add("hidden");
-      editButton.classList.remove("hidden");
+        // Toggle buttons
+        const editButton = document.getElementById(`editBtn-${eventId}`);
+        const saveButton = document.getElementById(`saveBtn-${eventId}`);
+        saveButton.classList.add("hidden");
+        editButton.classList.remove("hidden");
+      } 
+      }else {
+        alert("Start Date need to be no later than End Date.");
     }
   }
 
   // Function to delete an event
   async function deleteEventHandler(eventId) {
-    const result = await eventAPI.deleteEvent(eventId);
+    const result = await eventAPI.deleteEvent(eventId); //event has been deleted
+    //Only for DOM manipulation
     if (result !== undefined) {
       const eventRow = document.getElementById(`eventRow-${eventId}`);
       eventRow.remove();
@@ -178,30 +194,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Event listener for "Remove Date" button
   removeDateButton.addEventListener("click", async () => {
     console.log("Remove Date Button Clicked");
-    
+    const events = await eventAPI.getEvents();
     for (let event of events) {
       let dateData = new Date(event.endDate);
       let nowDate = new Date();
       console.log(dateData);
-      console.log(dateData<nowDate)
+      console.log(dateData < nowDate);
 
       if (dateData < nowDate) {
-
-        // deleteEventHandler(event.id) 
+        // deleteEventHandler(event.id)
         const result = await eventAPI.deleteEvent(event.id);
-         if (result !== undefined) {
+        if (result !== undefined) {
           const eventRow = document.getElementById(`eventRow-${result}`);
           console.log(eventRow);
           eventRow.remove();
         }
-    }
-    if (dateData > nowDate){
-        console.log(event.endDate)
-    }
-
+      }
+      if (dateData > nowDate) {
+        console.log(event.endDate);
+      }
     }
   });
-
-   
-
 });
