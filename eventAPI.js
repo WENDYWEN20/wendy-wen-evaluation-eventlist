@@ -6,7 +6,7 @@ const eventAPI = (() => {
   //a fetch is a get request by default
       // response.json also returns a promise
       const events = await response.json();
-      //   console.log(events);
+      console.log(events);
       return events;
     }
 
@@ -20,7 +20,7 @@ const eventAPI = (() => {
       });
   
       const event = await response.json();
-      //   console.log(event.id);
+      console.log(event)
       return event;
     }
   

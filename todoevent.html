@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use TODO template</title>
+    <script src="./eventAPI.js"></script>
+    <script src="./event.js"></script>
+    <link rel="stylesheet" href="./event.css">
+    
+</head>
+<body>
+    <h1>Use Todo Template</h1>
+    <p id="eventElem"></p>
+
+    <body>
+
+        <main>
+            <div class="table-container" id="eventTableContainer">
+                <button class="add-event-top-btn" id="addNewEventButton">Add New Event</button>
+                <table class="event-table" id="eventTable">
+                  <thead>
+                    <tr class="table-header">
+                      <th class="header-event">Event</th>
+                      <th class="header-start">Start</th>
+                      <th class="header-end">End</th>
+                      <th class="header-actions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="eventTableBody">
+                    <!-- Rows from backend-->
+                  </tbody>
+                 
+                </table>
+              </div>
+        </main>
+</body>
+</html>

@@ -1,7 +1,9 @@
 body {
+    
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color:#f0f0f0
+    background-color:#f0f0f0;
+    text-align: center;
   }
   
   .add-event-top-btn {
@@ -10,32 +12,33 @@ body {
     padding: 10px 20px;
     background-color: #008cba;
     color: #fff;
-    border: none;
     border-radius: 4px;
     font-size: 16px;
+
   }
   .table-container {
+
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px #e6e2d3;
   }
   
   .event-table {
     width: 100%;
     border-collapse: collapse;
+    border: 2px solid  #e6e2d3;
+    border-radius:8px;
+   
   }
   
   .table-header th {
     padding: 10px;
-    text-align: left;
-    border: 10x solid #ddd;
     font-weight: bold;
   }
 
   .event-row td, .new-event-row td {
     background-color:#e6e2d3;
-    border: 10px solid  white;
+    border-top: 10px solid  white;
   }
 
 
