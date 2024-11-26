@@ -178,9 +178,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Event listener for "Remove Date" button
   removeDateButton.addEventListener("click", async () => {
     console.log("Remove Date Button Clicked");
-    eventTableBody.innerHTML = ""; // Clear the table body before rendering new rows
+    
     for (let event of events) {
-      console.log(event.id);
       let dateData = new Date(event.endDate);
       let nowDate = new Date();
       console.log(dateData);
@@ -196,10 +195,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           eventRow.remove();
         }
     }
-      if (dateData >= nowDate) {
-        addEventRow(event);
-        console.log(event.id);
-      }
+    if (dateData > nowDate){
+        console.log(event.endDate)
+    }
+
     }
   });
 
