@@ -63,9 +63,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     cancelHideButton.classList.add("cancel-button");
     cancelHideButton.classList.add("hidden");
     cancelHideButton.setAttribute("id", `cancelHideButton-${event.id}`);
-    // cancelHideButton.addEventListener("click", () => {
-    //     console.log("CancelHide Button clicked!");
-    //   });
+    cancelHideButton.addEventListener("click", () => {
+      console.log("CancelHide Button clicked!");
+    });
 
     cell3.append(editButton);
     cell3.append(deleteButton);
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const newInputRow = document.createElement("tr");
     tableElem.append(newInputRow);
     newInputRow.classList.add("new-event-row");
-    //   eventRow.setAttribute("id", `eventRow-${event.id}`);
+    // eventRow.setAttribute("id", `eventRow-${event.id}`);
     let cell0 = document.createElement("td");
     let cell0input = document.createElement("input");
     cell0.append(cell0input);
@@ -172,20 +172,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const eventEditEnd = eventEditRow.querySelector(`#eventEnd-${eventId}`);
     const editButton = eventEditRow.querySelector(`#editButton-${eventId}`);
     editButton.classList.add("hidden");
-    // const cancelButton = eventEditRow.querySelector(`#cancelHideButton-${eventId}`);
-    // cancelButton.classList.remove('hidden');
-    // const deleteButton = eventEditRow.querySelector(`#editButton-${eventId}`);
-    // editButton.classList.add('hidden');
+    const cancelEditButton = eventEditRow.querySelector(
+      `#cancelHideButton-${eventId}`
+    );
+    cancelEditButton.classList.remove("hidden");
+    const deleteButton = eventEditRow.querySelector(`#deleteButton-${eventId}`);
+    deleteButton.classList.add("hidden");
 
     const saveEditButton = eventEditRow.querySelector(
       `#saveHideButton-${eventId}`
     );
     saveEditButton.classList.remove("hidden");
 
-    // const cancelEditButton = eventEditRow.querySelector(`#cancelHideButton-${eventId}`);
-    // cancelEditButton.classList.remove('hidden');
-    // cancelEditButton.addEventListener("click", () => {
-    //     console.log("CancelHide Button clicked!")});
+
 
     console.log(eventEditRow);
     console.log(eventEditName);
@@ -194,17 +193,35 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let eventInputName = document.createElement("input");
     eventEditName.append(eventInputName);
+    eventInputName.type='text'
+    eventInputName.setAttribute("placeholder", `${eventEditName.textContent}`)
+    
+
     eventInputName.setAttribute("id", `eventInputName-${eventId}`);
 
     let eventInputStart = document.createElement("input");
     eventEditStart.append(eventInputStart);
     eventInputStart.type = "date";
+    eventInputStart.value=eventEditStart.textContent
     eventInputStart.setAttribute("id", `eventInputStart-${eventId}`);
 
     let eventInputEnd = document.createElement("input");
     eventEditEnd.append(eventInputEnd);
     eventInputEnd.type = "date";
+    eventInputEnd.value=eventEditEnd.textContent
     eventInputEnd.setAttribute("id", `eventInputEnd-${eventId}`);
+
+    cancelEditButton.addEventListener("click", () => {
+        console.log("CancelHide Button clicked!");
+        editButton.classList.remove("hidden");
+        deleteButton.classList.remove("hidden");
+  
+        saveEditButton.classList.add("hidden")
+        cancelEditButton.classList.add("hidden")
+        eventInputName.remove()
+        eventInputStart.remove()
+        eventInputEnd.remove();
+      });
   }
 
   async function saveHideHandler(eventId) {
